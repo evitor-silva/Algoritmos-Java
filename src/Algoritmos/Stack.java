@@ -12,17 +12,31 @@ public class Stack implements NodeInterface{
 		No node = new No();
 		node.value = value;
 		
-		// Caso não exista o root coloque o node
+		//node.right coloque o node raiz
+		node.right = root;
+		
+		// Coloca o novo node como root
+		this.root = node;
+		
+	}
+	
+	//Remove o root atual e coloca anterior
+	public void pop() {
 		if(root == null) {
-			root = node;
-		}else {
-			// Laço, caso não exista o root.next coloque o node
-			while(root.next == null) {
-				root.next = node;
-			}
-			// Coloca o novo node como root
-			root = node;
+			return;
 		}
+		// Deixa como root o nó anterior
+		root = root.right;
+	}
+	
+	
+	@Override
+	public void get() {
+		if(root == null) {
+			return;
+		}
+		// retorna valor atual do nó
+		System.out.print(root.value);
 	}
 
 }
