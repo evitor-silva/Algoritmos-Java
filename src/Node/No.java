@@ -2,8 +2,8 @@ package Node;
 
 public class No {
 
-	public No next = null;
-	public No previous = null;
+	public No right = null;
+	public No left = null;
 	public String value;
 	
 }

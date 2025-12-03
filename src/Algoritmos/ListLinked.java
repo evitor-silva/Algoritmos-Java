@@ -26,6 +26,7 @@ public class ListLinked implements NodeInterface{
 	
 	}
 	
+	
 	@Override
 	public void get() {
 		if(root == null) {
@@ -36,9 +37,18 @@ public class ListLinked implements NodeInterface{
 		No temp = root;
 		
 		while(temp != null) {
-			System.out.print(temp.value);
+			System.out.print(temp.value+ " ");
 			temp = temp.right;
 		}
+	}
+
+
+	@Override
+	public void pop() {
+		if(root == null) {
+			return;
+		}
+		
 	}
 
 }
