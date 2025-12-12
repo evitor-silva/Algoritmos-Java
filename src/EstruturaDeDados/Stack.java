@@ -1,14 +1,14 @@
-package Algoritmos;
+package EstruturaDeDados;
 
 import Interfaces.NodeInterface;
 import Node.No;
 
+//Lifo
 public class Stack implements NodeInterface{
 	private No root;
 	
 	// Método adicionar Pilha
-	@Override
-	public void add(String value) {
+	public void add(Integer value) {
 		No node = new No();
 		node.value = value;
 		
@@ -29,9 +29,19 @@ public class Stack implements NodeInterface{
 		root = root.right;
 	}
 	
-	
 	@Override
 	public void get() {
+		No temp = root;
+		
+		while(temp != null) {
+			System.out.print(temp.value+ " ");
+			temp = temp.right;
+		}
+		
+	}
+	
+	@Override
+	public void peek() {
 		if(root == null) {
 			return;
 		}

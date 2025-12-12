@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
-import Algoritmos.ListLinked;
-import Algoritmos.Stack;
+import EstruturaDeDados.*;
+
+
 
 public class Main {
 	public static void main (String args[]) {
@@ -10,6 +11,7 @@ public class Main {
         System.out.println("===== SELECIONE A ESTRUTURA =====");
         System.out.println("1 - Usar Stack (Pilha)");
         System.out.println("2 - Usar ListLinked (Lista Ligada)");
+        System.out.println("3 - Usar Árvore binária");
         System.out.print("Escolha: ");
         int escolha = sc.nextInt();
         sc.nextLine();
@@ -17,6 +19,7 @@ public class Main {
      
         Stack stack = null;
         ListLinked list = null;
+        BinaryTree tree = null;
 
         if (escolha == 1) {
             stack = new Stack();
@@ -24,7 +27,12 @@ public class Main {
         } else if (escolha == 2) {
             list = new ListLinked();
             System.out.println("Você escolheu: ListLinked (Lista Ligada)");
-        } else {
+        }
+        else if (escolha == 3) {
+            tree = new BinaryTree();
+            System.out.println("Você escolheu: Árvore binária");
+        }
+        else {
             System.out.println("Opção inválida. Encerrando...");
             sc.close();
             return;
@@ -34,8 +42,8 @@ public class Main {
         do {
             System.out.println("\n===== MENU =====");
             System.out.println("1 - Adicionar elemento");
-            System.out.println("2 - Remover elemento (pop)");
-            System.out.println("3 - Mostrar elemento atual (topo/get)");
+            System.out.println("2 - Remover ultimo elemento (pop)");
+            System.out.println("3 - Mostrar elemento atual (peek)");
             System.out.println("4 - Mostrar todos os elementos");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
@@ -45,32 +53,39 @@ public class Main {
             switch (opcao) {
                 case 1:
                     System.out.print("Digite o valor: ");
-                    String valor = sc.nextLine();
+                    int valor = sc.nextInt();
                     if (stack != null) {
                         stack.add(valor);
-                    } else {
+                    } else if(list != null) {
                         list.add(valor);
+                    }else {
+                    	tree.add(valor);
                     }
                     System.out.println("Elemento \"" + valor + "\" adicionado!");
                     break;
 
                 case 2:
+                	System.out.println("Removido: ");
                     if (stack != null) {
-                          System.out.println("Removido: ");
                           stack.pop();
-              
-                    } else {
-                    	System.out.println("Removido: ");
+                    }else if(list != null) {
                     	list.pop();
+                    }else {
+                    	tree.pop();
                     }
                     break;
 
                 case 3:
                     if (stack != null) {
-                        //  System.out.println("Topo da pilha: " + stack.peek());
+ 
+                        System.out.println("Topo da pilha: " );
+                        stack.peek();
                 
-                    } else {
-             
+                    } else if(list != null) {
+                        list.peek();
+                    }else {
+                    	System.out.println("Topo da pilha: " );
+                    	tree.peek();
                     }
                     break;
 
@@ -78,7 +93,10 @@ public class Main {
                     if (stack != null) {
                         System.out.println("Elementos da pilha: " );
                         stack.get();
-                    } else {
+                    } else if(tree != null) {
+                    	tree.get();
+                    }
+                    else {
                         System.out.println("Elementos da lista: " );
                         list.get();
                     }

@@ -1,4 +1,4 @@
-package Algoritmos;
+package EstruturaDeDados;
 import Interfaces.NodeInterface;
 import Node.No;
 
@@ -8,8 +8,7 @@ public class ListLinked implements NodeInterface{
 	private No tail;
 	
 	// Método adicionar Lista linkada
-	@Override
-	public void add(String value) {
+	public void add(Integer value) {
 		No node = new No();
 		node.value = value;
 
@@ -46,7 +45,11 @@ public class ListLinked implements NodeInterface{
 			temp = temp.right;
 		}
 	}
-
+	@Override
+	public void peek() {
+		//retorna o topo
+		System.out.print(root.value);
+	}
 
 	//Remove ultimo nó do root
 	@Override
