@@ -38,7 +38,7 @@ public class BinaryTree implements NodeInterface {
 
 	}
 
-	//Remove menor valor da folha
+	// Remove menor valor da folha
 	public No removerRecursivo(No root) {
 		// caso base
 		if (root == null)
@@ -64,11 +64,17 @@ public class BinaryTree implements NodeInterface {
 
 	@Override
 	public void pop() {
+		if (root == null) {
+			return;
+		}
 		removerRecursivo(root);
 	}
 
 	@Override
 	public void peek() {
+		if (root == null) {
+			return;
+		}
 		// TODO Auto-generated method stub
 		System.out.print(root.value);
 	}
