@@ -62,11 +62,13 @@ public class Main {
 			case 2:
 				System.out.println("Removido: ");
 				if (stack != null) {
-					stack.pop();
+					System.out.println(stack.pop());
 				} else if (list != null) {
-					list.pop();
+					System.out.println(list.pop());
 				} else {
-					tree.pop();
+					System.out.print("Digite o valor: ");
+					int remov = sc.nextInt();
+					System.out.println(tree.pop(remov));
 				}
 				break;
 

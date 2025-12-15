@@ -13,13 +13,22 @@ class StackTest {
 	@Test
 	void test() {
 
+		stack.add(40);
+		stack.add(20);
+		stack.add(30);
+
+	}
+	
+	@Test
+	void testPopRemovesElement() {
 		stack.add(10);
 		stack.add(20);
 		stack.add(30);
 
-		// stack.get();
-		stack.pop();
+		Integer remove = stack.pop();
+		assertEquals(20, remove);
 		stack.get();
+
 	}
 
 }

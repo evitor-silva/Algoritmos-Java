@@ -16,8 +16,9 @@ class ListLinkedTest {
 		list.add(20);
 		list.add(30);
 
-		// list.get();
-		list.pop();
+		Integer remove = list.pop();
+		assertEquals(20, remove);
+
 		list.get();
 	}
 

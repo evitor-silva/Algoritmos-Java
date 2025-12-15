@@ -20,13 +20,14 @@ public class Stack implements NodeInterface {
 
 	}
 
-	// Remove o root atual e coloca anterior
-	public void pop() {
+
+
+	@Override
+	public void peek() {
 		if (root == null) {
 			return;
 		}
-		// Deixa como root o nó anterior
-		root = root.right;
+		System.out.print(root.value);
 	}
 
 	@Override
@@ -37,16 +38,17 @@ public class Stack implements NodeInterface {
 			System.out.print(temp.value + " ");
 			temp = temp.right;
 		}
-
+		
 	}
 
-	@Override
-	public void peek() {
+
+	// Remove o root atual e coloca anterior
+	public Integer pop() {
 		if (root == null) {
-			return;
+			return null;
 		}
-		// retorna valor atual do nó
-		System.out.print(root.value);
+		root = root.right;
+		return root.value;
 	}
 
 }

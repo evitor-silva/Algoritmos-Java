@@ -39,49 +39,48 @@ public class BinaryTree implements NodeInterface {
 	}
 
 	// Remove menor valor da folha
-	public No removerRecursivo(No root) {
+	public No removerRecursivo(No root, int value) {
 		// caso base
 		if (root == null)
 			return null;
 
-		if (root.left == null && root.right == null)
-			return null;
-		if (root.left != null) {
-			root.left = removerRecursivo(root.left);
+		if (value < root.value) {
+			root.left = removerRecursivo(root.left, value);
+		} else if (value > root.value) {
+			root.right = removerRecursivo(root.right, value);
 		} else {
-			root.right = removerRecursivo(root.right);
-		}
+			if (root.left == null)
+				return root.right;
+			if (root.right == null)
+				return root.left;
 
+			int minValue = new No().findMin(root.right);
+			root.value = minValue;
+			root.right = removerRecursivo(root.right, minValue);
+		}
 		return root;
 	}
 
-	private int findMin(No node) {
-		while (node.left != null) {
-			node = node.left;
-		}
-		return node.value;
-	}
 
-	@Override
-	public void pop() {
-		if (root == null) {
-			return;
-		}
-		removerRecursivo(root);
-	}
 
 	@Override
 	public void peek() {
 		if (root == null) {
 			return;
 		}
-		// TODO Auto-generated method stub
+
 		System.out.print(root.value);
 	}
 
 	@Override
 	public void get() {
 		printRecursivo(root);
+	}
+
+	public Integer pop(int value) {
+		Integer min = new No().findValue(root, value);
+		root = removerRecursivo(root, value);
+		return min;
 	}
 
 }

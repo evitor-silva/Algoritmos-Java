@@ -32,48 +32,46 @@ public class ListLinked implements NodeInterface {
 	}
 
 	@Override
+	public void peek() {
+
+		System.out.print(root.value);
+	}
+
+	// Remove ultimo nó do root
+	public Integer pop() {
+		No temp = root;
+
+		if (temp == null)
+			return null;
+
+		if (temp.right == null) {
+			root = null;
+			return null;
+		}
+
+	
+		while (temp.right != null) {
+			temp = temp.right;
+		}
+
+		tail = temp.left;
+		temp.left.right = null;
+		return tail.value;
+
+	}
+
+	@Override
 	public void get() {
 		if (root == null) {
 			return;
 		}
 
-		// Cria uma nova variavel nó temporária
 		No temp = root;
 
 		while (temp != null) {
 			System.out.print(temp.value + " ");
 			temp = temp.right;
 		}
-	}
-
-	@Override
-	public void peek() {
-		// retorna o topo
-		System.out.print(root.value);
-	}
-
-	// Remove ultimo nó do root
-	@Override
-	public void pop() {
-		No temp = root;
-
-		if (temp == null)
-			return;
-
-		if (temp.right == null) {
-			System.out.print(root.value);
-			root = null;
-			return;
-		}
-
-		// percorre até o ultimo nó
-		while (temp.right != null) {
-			temp = temp.right;
-		}
-
-		tail = temp.left;
-		System.out.print(tail.right.value);
-		temp.left.right = null;
 
 	}
 
